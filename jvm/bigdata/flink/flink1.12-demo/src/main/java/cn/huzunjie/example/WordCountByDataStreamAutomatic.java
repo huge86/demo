@@ -9,6 +9,7 @@ import org.apache.flink.streaming.api.datastream.KeyedStream;
 import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.util.Collector;
+
 /**
  * Author: HuZunJie
  * Date: 2021-06-03 7:16
@@ -19,20 +20,15 @@ import org.apache.flink.util.Collector;
  */
 
 
-public class WordCountByDataStream {
-
+public class WordCountByDataStreamAutomatic {
     public static void main(String[] args) throws Exception {
         //TODO 0.env
-        //dataset style
-        //ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
-//        env.setRuntimeMode(RuntimeExecutionMode.BATCH);//注意:使用DataStream实现批处理
-//        env.setRuntimeMode(RuntimeExecutionMode.STREAMING);//注意:使用DataStream实现流处理
         env.setRuntimeMode(RuntimeExecutionMode.AUTOMATIC);//注意:使用DataStream根据数据源自动选择使用流还是批
 
         //TODO 1.source
-        //DataSet<String> lines = env.fromElements("itcast hadoop spark", "itcast hadoop spark", "itcast hadoop", "itcast");
-        DataStream<String> lines = env.fromElements("itcast hadoop spark", "itcast hadoop spark", "itcast hadoop", "itcast");
+//        本测试环境需要把socket环境搭建好，AUTOMATIC会按照流的模式运行
+        DataStream<String> lines = env.socketTextStream("node1", 9999);
 
         //TODO 2.transformation
         //切割
@@ -53,7 +49,7 @@ public class WordCountByDataStream {
             }
         });
 
-        //记为1
+        //记为1:(单词,1)
         /*
         @FunctionalInterface
         public interface MapFunction<T, O> extends Function, Serializable {
@@ -64,7 +60,7 @@ public class WordCountByDataStream {
             @Override
             public Tuple2<String, Integer> map(String value) throws Exception {
                 //value就是一个个单词
-                return Tuple2.of(value, 1);
+                return Tuple2.of(value, 1); //(_,1)
             }
         });
 

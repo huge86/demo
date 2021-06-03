@@ -5,24 +5,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.huzunjie</groupId>
-    <artifactId>flink-dataset-demo</artifactId>
+    <artifactId>flink1.12-demo</artifactId>
     <version>0.0.1</version>
 
-    <!-- 指定仓库位置，依次为aliyun、apache和cloudera仓库 -->
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>aliyun</id>-->
-<!--            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-<!--        </repository>-->
-<!--        <repository>-->
-<!--            <id>apache</id>-->
-<!--            <url>https://repository.apache.org/content/repositories/snapshots/</url>-->
-<!--        </repository>-->
-<!--        <repository>-->
-<!--            <id>cloudera</id>-->
-<!--            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <!--     指定仓库位置，依次为aliyun、apache和cloudera仓库 -->
+    <repositories>
+
+        <repository>
+            <id>central-repos</id>
+            <name>Central Repository</name>
+            <url>http://repo.maven.apache.org/maven2</url>
+        </repository>
+        <repository>
+            <id>aliyun</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+        <repository>
+            <id>apache</id>
+            <url>https://repository.apache.org/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+    </repositories>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
@@ -184,8 +190,9 @@
         <dependency>
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-exec</artifactId>
-            <version>2.1.0</version>
+            <version>3.1.2</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.flink</groupId>
@@ -205,6 +212,13 @@
             <version>5.1.38</version>
             <!--<version>8.0.20</version>-->
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongo-java-driver</artifactId>
+            <version>3.12.8</version>
+        </dependency>
+
 
         <!-- 高性能异步组件：Vertx-->
         <dependency>
@@ -334,4 +348,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
