@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="b937d558-c251-48b5-aa88-f476eb020330" name="i-siqi04.novalocal">
+        <fileTransfer accessType="SFTP" host="i-siqi02.novalocal" port="2658" sshConfigId="50431b68-1dc1-4349-a906-f5d011656874" sshConfig="root@i-siqi02.novalocal:2658 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
