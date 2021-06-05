@@ -19,6 +19,11 @@
     <remote-repository>
       <option name="id" value="cloudera" />
       <option name="name" value="cloudera" />
+      <option name="url" value="https://repository.cloudera.com/artifactory/cloudera-repos/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="cloudera" />
+      <option name="name" value="cloudera" />
       <option name="url" value="https://repository.cloudera.com/artifactory/cloudera- repos/" />
     </remote-repository>
     <remote-repository>

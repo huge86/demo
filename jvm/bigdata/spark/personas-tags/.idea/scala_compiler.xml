@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="Maven 1" modules="personas-tags,tags-etl,tags-model,tags-oozie,tags-up" />
+    <profile name="Maven 1" modules="personas-tags,tags-etl,tags-model,tags-oozie" />
     <profile name="Maven 2" modules="tags-schedule">
       <parameters>
         <parameter value="-dependencyfile" />
         <parameter value="D:\dev\WorkSpace\github\huge86\demo\jvm\bigdata\spark\personas-tags\tags-schedule\target/.scala_dependencies" />
+      </parameters>
+    </profile>
+    <profile name="Maven 3" modules="tags-up">
+      <parameters>
+        <parameter value="-dependencyfile" />
+        <parameter value="D:\dev\WorkSpace\github\huge86\demo\jvm\bigdata\spark\personas-tags\tags-up\target/.scala_dependencies" />
       </parameters>
     </profile>
   </component>

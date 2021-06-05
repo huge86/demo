@@ -13,6 +13,8 @@
         <module>tags-schedule</module>
         <module>tags-model</module>
         <module>tags-up</module>
+        <module>tags-web</module>
+        <module>tags-web-end</module>
     </modules>
 
 <!--    <properties>-->
