@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="Maven 1" modules="personas-tags,tags-etl,tags-model,tags-oozie" />
+    <profile name="Maven 1" modules="personas-tags,tags-etl,tags-model,tags-oozie,tags-up" />
     <profile name="Maven 2" modules="tags-schedule">
       <parameters>
         <parameter value="-dependencyfile" />

@@ -12,6 +12,7 @@
         <module>tags-etl</module>
         <module>tags-schedule</module>
         <module>tags-model</module>
+        <module>tags-up</module>
     </modules>
 
 <!--    <properties>-->
