@@ -9,6 +9,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="93ea838a-cdf8-4d0b-ae02-761c1d2bc0bd" name="bigdata-cdh01.itcast.cn">
+        <fileTransfer accessType="SFTP" host="bigdata-cdh01.itcast.cn" port="22" sshConfigId="ca757800-dcbe-4ce6-83ee-10ee4a08f9df" sshConfig="root@bigdata-cdh01.itcast.cn:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

@@ -2,6 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" serverName="i-siqi04.novalocal" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
+      <paths name="bigdata-cdh01.itcast.cn">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/tags-model" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
       <paths name="i-siqi04.novalocal">
         <serverdata>
           <mappings>

@@ -8,6 +8,7 @@
       <sshConfig authType="PASSWORD" host="i-siqi05.novalocal" id="1605d6cb-a920-4ca6-a168-c941b626f6b1" port="2658" nameFormat="DESCRIPTIVE" username="root" />
       <sshConfig authType="PASSWORD" host="i-siqi06.novalocal" id="7dcd260d-bd86-4f7b-b5fd-06310e7d3b17" port="2658" nameFormat="DESCRIPTIVE" username="root" />
       <sshConfig authType="PASSWORD" host="i-siqi07.novalocal" id="528dfb19-2a3a-48f6-b913-f656fbccf519" port="2658" nameFormat="DESCRIPTIVE" username="root" />
+      <sshConfig authType="PASSWORD" host="bigdata-cdh01.itcast.cn" id="ca757800-dcbe-4ce6-83ee-10ee4a08f9df" port="22" nameFormat="DESCRIPTIVE" username="root" />
     </configs>
   </component>
 </project>
