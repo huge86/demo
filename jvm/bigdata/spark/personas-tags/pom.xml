@@ -14,13 +14,13 @@
         <module>tags-model</module>
         <module>tags-up</module>
         <module>tags-web</module>
-        <module>tags-web-end</module>
+        <!--        <module>tags-web-end</module>-->
     </modules>
 
-<!--    <properties>-->
-<!--        <maven.compiler.source>8</maven.compiler.source>-->
-<!--        <maven.compiler.target>8</maven.compiler.target>-->
-<!--    </properties>-->
+    <!--    <properties>-->
+    <!--        <maven.compiler.source>8</maven.compiler.source>-->
+    <!--        <maven.compiler.target>8</maven.compiler.target>-->
+    <!--    </properties>-->
 
     <!-- 指定仓库位置，依次为aliyun、cloudera和jboss仓库 -->
     <repositories>

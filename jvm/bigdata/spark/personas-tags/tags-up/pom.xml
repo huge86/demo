@@ -21,16 +21,16 @@
         <!--        <maven-compiler-plugin.version>3.1</maven-compiler-plugin.version>-->
         <!--        <build-helper-plugin.version>3.0.0</build-helper-plugin.version>-->
         <!--        <scala-compiler-plugin.version>3.2.0</scala-compiler-plugin.version>-->
-<!--        <maven.compiler.source>8</maven.compiler.source>-->
-<!--        <maven.compiler.target>8</maven.compiler.target>-->
+        <!--        <maven.compiler.source>8</maven.compiler.source>-->
+        <!--        <maven.compiler.target>8</maven.compiler.target>-->
     </properties>
 
-<!--    <repositories>-->
-<!--        <repository>-->
-<!--            <id>cloudera</id>-->
-<!--            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>-->
-<!--        </repository>-->
-<!--    </repositories>-->
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>cloudera</id>-->
+    <!--            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 
     <dependencies>
         <!-- Scala -->

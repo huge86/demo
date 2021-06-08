@@ -62,12 +62,14 @@ public class HDFSUtils {
         System.out.println("config.get(\"fs.defaultFS\")： " + config.get("fs.defaultFS"));
         uri = URI.create(config.get("fs.defaultFS"));
     }
+
     public String getDefaultFs() {
         return config.get("fs.defaultFS");
     }
+
     /**
      * 判断文件是否存在
-     *
+     * <p>
      * 异常存在的目的是好的, 是为了告诉你这个地方有问题, 需要我们去处理这个问题
      */
     public Boolean exists(String path) {
@@ -108,12 +110,12 @@ public class HDFSUtils {
     /**
      * 问题: 代码冗余
      * 表现:
-     *       1. try catch 内写代码, try 是冗余的
-     *       2. fs 的创建是冗余的
-     *
+     * 1. try catch 内写代码, try 是冗余的
+     * 2. fs 的创建是冗余的
+     * <p>
      * 泛型的使用分为两个部分:
-     *       1. 声明泛型, 这个时候, 类型还未被确认
-     *       2. 一定要在使用的时候, 确认泛型的类型. 否则, 就是 Object
+     * 1. 声明泛型, 这个时候, 类型还未被确认
+     * 2. 一定要在使用的时候, 确认泛型的类型. 否则, 就是 Object
      */
     private <T> T handleProcess(Processor<T> processor) {
         try {

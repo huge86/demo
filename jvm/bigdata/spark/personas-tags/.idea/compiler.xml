@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="tags-web-end" />
         <module name="tags-web" />
         <module name="tags-etl" />
+        <module name="tags-web-test" />
         <module name="tags-model" />
         <module name="tags-schedule" />
         <module name="tags-up" />
@@ -17,12 +17,14 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="tags-oozie" target="1.8" />
+      <module name="tags-web-end" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="tags-web" options="-parameters" />
       <module name="tags-web-end" options="-parameters" />
+      <module name="tags-web-test" options="-parameters" />
     </option>
   </component>
 </project>
