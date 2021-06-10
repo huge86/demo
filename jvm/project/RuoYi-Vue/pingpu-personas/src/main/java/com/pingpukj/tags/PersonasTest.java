@@ -10,8 +10,7 @@ package com.pingpukj.tags;
  */
 
 
-public class Test {
-    public static void main(String[] args) {
-        System.out.println("Hello World...");
-    }
+public class PersonasTest {
+
+    public String helloTest(){return "hello hahahahahaha";}
 }

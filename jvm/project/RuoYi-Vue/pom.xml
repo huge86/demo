@@ -215,6 +215,11 @@
                 <artifactId>ruoyi-common</artifactId>
                 <version>${ruoyi.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.pingpukj</groupId>
+                <artifactId>pingpu-personas</artifactId>
+                <version>1.0.0</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>

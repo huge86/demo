@@ -60,6 +60,12 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
+        <!-- 用户画像-->
+        <dependency>
+            <groupId>com.pingpukj</groupId>
+            <artifactId>pingpu-personas</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
     </dependencies>
 
