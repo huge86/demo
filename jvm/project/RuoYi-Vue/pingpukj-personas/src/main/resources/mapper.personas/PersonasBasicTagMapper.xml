@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pingpukj.personas.mapper.PersonasBasicTagMapper">
+    
+    <resultMap type="PersonasBasicTag" id="PersonasBasicTagResult">
+        <result property="tagId"    column="tag_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="tagName"    column="tag_name"    />
+        <result property="industry"    column="industry"    />
+        <result property="rule"    column="rule"    />
+        <result property="business"    column="business"    />
+        <result property="level"    column="level"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="state"    column="state"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectPersonasBasicTagVo">
+        select tag_id, parent_id, tag_name, industry, rule, business, level, create_by, create_time, update_by, update_time, state, remark from personas_basic_tag
+    </sql>
+
+    <select id="selectPersonasBasicTagList" parameterType="PersonasBasicTag" resultMap="PersonasBasicTagResult">
+        <include refid="selectPersonasBasicTagVo"/>
+        <where>  
+            <if test="parentId != null "> and parent_id = #{parentId}</if>
+            <if test="tagName != null  and tagName != ''"> and tag_name like concat('%', #{tagName}, '%')</if>
+            <if test="industry != null  and industry != ''"> and industry = #{industry}</if>
+            <if test="rule != null  and rule != ''"> and rule = #{rule}</if>
+            <if test="business != null  and business != ''"> and business = #{business}</if>
+            <if test="level != null "> and level = #{level}</if>
+            <if test="state != null "> and state = #{state}</if>
+        </where>
+    </select>
+    
+    <select id="selectPersonasBasicTagById" parameterType="Long" resultMap="PersonasBasicTagResult">
+        <include refid="selectPersonasBasicTagVo"/>
+        where tag_id = #{tagId}
+    </select>
+        
+    <insert id="insertPersonasBasicTag" parameterType="PersonasBasicTag" useGeneratedKeys="true" keyProperty="tagId">
+        insert into personas_basic_tag
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">parent_id,</if>
+            <if test="tagName != null">tag_name,</if>
+            <if test="industry != null">industry,</if>
+            <if test="rule != null">rule,</if>
+            <if test="business != null">business,</if>
+            <if test="level != null">level,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="state != null">state,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">#{parentId},</if>
+            <if test="tagName != null">#{tagName},</if>
+            <if test="industry != null">#{industry},</if>
+            <if test="rule != null">#{rule},</if>
+            <if test="business != null">#{business},</if>
+            <if test="level != null">#{level},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="state != null">#{state},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePersonasBasicTag" parameterType="PersonasBasicTag">
+        update personas_basic_tag
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="tagName != null">tag_name = #{tagName},</if>
+            <if test="industry != null">industry = #{industry},</if>
+            <if test="rule != null">rule = #{rule},</if>
+            <if test="business != null">business = #{business},</if>
+            <if test="level != null">level = #{level},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="state != null">state = #{state},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where tag_id = #{tagId}
+    </update>
+
+    <delete id="deletePersonasBasicTagById" parameterType="Long">
+        delete from personas_basic_tag where tag_id = #{tagId}
+    </delete>
+
+    <delete id="deletePersonasBasicTagByIds" parameterType="String">
+        delete from personas_basic_tag where tag_id in 
+        <foreach item="tagId" collection="array" open="(" separator="," close=")">
+            #{tagId}
+        </foreach>
+    </delete>
+</mapper>

@@ -49,6 +49,12 @@
             <artifactId>ruoyi-framework</artifactId>
         </dependency>
 
+        <!-- 系统代码-->
+<!--        <dependency>-->
+<!--            <groupId>com.ruoyi</groupId>-->
+<!--            <artifactId>ruoyi-system</artifactId>-->
+<!--        </dependency>-->
+
         <!-- 定时任务-->
         <dependency>
             <groupId>com.ruoyi</groupId>
@@ -60,10 +66,10 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-generator</artifactId>
         </dependency>
-        <!-- 用户画像-->
+        <!-- 用户画像 自定义模块-->
         <dependency>
             <groupId>com.pingpukj</groupId>
-            <artifactId>pingpu-personas</artifactId>
+            <artifactId>pingpukj-personas</artifactId>
             <version>1.0.0</version>
         </dependency>
 
