@@ -60,6 +60,11 @@
             <groupId>com.pingpukj</groupId>
             <artifactId>personas-generator</artifactId>
         </dependency>
+<!--        用户画像-标签-->
+        <dependency>
+            <groupId>com.pingpukj</groupId>
+            <artifactId>personas-tag</artifactId>
+        </dependency>
 
     </dependencies>
 

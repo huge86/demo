@@ -91,7 +91,7 @@ token:
 # MyBatis配置
 mybatis:
     # 搜索指定包别名
-    typeAliasesPackage: com.ruoyi.**.domain
+    typeAliasesPackage: com.ruoyi.**.domain,com.pingpukj.**.domain
     # 配置mapper的扫描，找到所有的mapper.xml映射文件
     mapperLocations: classpath*:mapper/**/*Mapper.xml
     # 加载全局的配置文件
@@ -105,7 +105,6 @@ pagehelper:
   params: count=countSql 
 
 # Swagger配置
-swagger:
   # 是否开启swagger
   enabled: true
   # 请求前缀
@@ -118,4 +117,4 @@ xss:
   # 排除链接（多个用逗号分隔）
   excludes: /system/notice/*
   # 匹配链接
-  urlPatterns: /system/*,/monitor/*,/tool/*
+  urlPatterns: /system/*,/monitor/*,/tool/*,/personas/*

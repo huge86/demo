@@ -3,19 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>ruoyi</artifactId>
-        <groupId>com.ruoyi</groupId>
+        <groupId>com.pingpukj</groupId>
+        <artifactId>personas</artifactId>
         <version>3.5.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.pingpukj</groupId>
-    <artifactId>pingpukj-personas</artifactId>
+    <artifactId>personas-tag</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-common</artifactId>
+            <groupId>com.pingpukj</groupId>
+            <artifactId>personas-common</artifactId>
         </dependency>
     </dependencies>
 

@@ -221,7 +221,7 @@
             <!--  用户画像  -->
             <dependency>
                 <groupId>com.pingpukj</groupId>
-                <artifactId>pingpu-personas</artifactId>
+                <artifactId>pingpukj-personas</artifactId>
                 <version>1.0.0</version>
             </dependency>
 

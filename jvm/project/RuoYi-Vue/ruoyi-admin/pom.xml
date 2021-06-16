@@ -70,7 +70,6 @@
         <dependency>
             <groupId>com.pingpukj</groupId>
             <artifactId>pingpukj-personas</artifactId>
-            <version>1.0.0</version>
         </dependency>
 
     </dependencies>
