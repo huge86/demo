@@ -1,4 +1,4 @@
-var mongoose=require('./db.js');
+var mongoose = require('./db.js');
 
 
 //mongoose数据校验:用户通过mongoose给mongodb数据库增加数据的时候，对数据的合法性进行的验证
@@ -9,40 +9,40 @@ var mongoose=require('./db.js');
 
 //Schema，为数据库对象的集合,每个schema会映射到mongodb中的一个collection,定义Schema可以理解为表结构的定义
 
-var UserSchema=mongoose.Schema({
-    name:{
-        type:String,//指定类型
-        trim:true,   //修饰符         
-        required:true      
+var UserSchema = mongoose.Schema({
+    name: {
+        type: String,//指定类型
+        trim: true,   //修饰符         
+        required: true
     },
-    sn:{
-        type:String,
-        index:true,  //索引.
-        set(val){  //自定义修饰符
+    sn: {
+        type: String,
+        index: true,  //索引.
+        set(val) {  //自定义修饰符
             return val;
         },
 
-        // maxlength:20,
-        // minlength:10
+        // maxlength: 20,
+        // minlength: 10,
         // match:/^sn(.*)/ ,
-        validate: function(sn) {
+        validate: function (sn) {//自定义验证器
             return sn.length >= 10;
-        }        
-        
-    },   
-    age:{
-        type:Number,
-        min:0,    //用在number类型上面
-        max:150
-    },       
-    status:{
-        type:String, 
-        default:'success', //默认值
-        enum:['success','error']   //status的值必须在 对应的数组里面  注意枚举是用在String
+        }
+
+    },
+    age: {
+        type: Number,
+        min: 0,    //用在number类型上面
+        max: 150
+    },
+    status: {
+        type: String,
+        default: 'success', //默认值
+        enum: ['success', 'error']   //status的值必须在 对应的数组里面  注意枚举是用在String
     }
 })
 
 
-module.exports=mongoose.model('User',UserSchema,'user');
+module.exports = mongoose.model('User', UserSchema, 'user');
 
 
