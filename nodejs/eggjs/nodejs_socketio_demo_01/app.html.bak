@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+
+    <script>
+
+        var socket = io('http://localhost:3000/');  /*和服务器建立连接*/
+
+    </script>
+</head>
+<body>
+客户端
+
+<button id="button">给服务器发送数据</button>
+
+
+</body>
+</html>
