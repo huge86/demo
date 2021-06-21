@@ -45,9 +45,9 @@ app._io.on( 'connection', socket => {
 
         //app._io.emit('serverEmit','我接收到增加购物车的事件了');  /*广播*/
 
-        //app._io.to(roomid).emit('serverEmit','我接收到增加购物车的事件了');
+        app._io.to(roomid).emit('serverEmit','我接收到增加购物车的事件了');
 
-        socket.broadcast.to(roomid).emit('serverEmit','我接收到增加购物车的事件了');
+        // socket.broadcast.to(roomid).emit('serverEmit','我接收到增加购物车的事件了');
 
 
 
