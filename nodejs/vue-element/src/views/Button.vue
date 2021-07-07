@@ -1,0 +1,63 @@
+<template>
+
+  <div>
+    <h2>H5按钮</h2>
+    <input type="button" value="我是一个按钮">
+    <br>
+    <h2>使用elementui中的button组件，注意组件属性的变化</h2>
+    <br>
+    <hr>
+    <h3>eui默认按钮</h3>
+    <el-row>
+      <el-button>默认按钮</el-button>
+      <el-button type="primary">主要按钮</el-button>
+      <el-button type="success">成功按钮</el-button>
+      <el-button type="info">信息按钮</el-button>
+      <el-button type="warning">警告按钮</el-button>
+      <el-button type="danger">危险按钮</el-button>
+    </el-row>
+    <br>
+    <hr>
+    <h3>eui朴素按钮</h3>
+    <el-row>
+      <el-button plain>朴素按钮</el-button>
+      <el-button type="primary" plain>主要按钮</el-button>
+      <el-button type="success" plain>成功按钮</el-button>
+      <el-button type="info" plain>信息按钮</el-button>
+      <el-button type="warning" plain>警告按钮</el-button>
+      <el-button type="danger" plain>危险按钮</el-button>
+    </el-row>
+    <br>
+    <hr>
+    <h3>eui圆角按钮</h3>
+    <el-row>
+      <el-button round>圆角按钮</el-button>
+      <el-button type="primary" round>主要按钮</el-button>
+      <el-button type="success" round>成功按钮</el-button>
+      <el-button type="info" round>信息按钮</el-button>
+      <el-button type="warning" round>警告按钮</el-button>
+      <el-button type="danger" round>危险按钮</el-button>
+    </el-row>
+    <br>
+    <hr>
+    <h3>eui图标按钮</h3>
+    <el-row>
+      <el-button icon="el-icon-search" circle></el-button>
+      <el-button type="primary" icon="el-icon-edit" circle></el-button>
+      <el-button type="success" icon="el-icon-check" circle></el-button>
+      <el-button type="info" icon="el-icon-message" circle></el-button>
+      <el-button type="warning" icon="el-icon-star-off" circle></el-button>
+      <el-button type="danger" icon="el-icon-delete" circle></el-button>
+    </el-row>
+  </div>
+</template>
+
+<script>
+export default {
+name: "Button"
+}
+</script>
+
+<style scoped>
+
+</style>

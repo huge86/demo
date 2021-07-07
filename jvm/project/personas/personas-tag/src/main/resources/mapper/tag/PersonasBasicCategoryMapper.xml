@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pingpukj.tag.mapper.PersonasBasicCategoryMapper">
+    
+    <resultMap type="PersonasBasicCategory" id="PersonasBasicCategoryResult">
+        <result property="catId"    column="cat_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="ancestors"    column="ancestors"    />
+        <result property="catName"    column="cat_name"    />
+        <result property="status"    column="status"    />
+        <result property="orderNum"    column="order_num"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectPersonasBasicCategoryVo">
+        select cat_id, parent_id, ancestors, cat_name, status, order_num, create_by, create_time, update_by, update_time, remark from personas_basic_category
+    </sql>
+
+    <select id="selectPersonasBasicCategoryList" parameterType="PersonasBasicCategory" resultMap="PersonasBasicCategoryResult">
+        <include refid="selectPersonasBasicCategoryVo"/>
+        <where>  
+            <if test="catName != null  and catName != ''"> and cat_name like concat('%', #{catName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="selectPersonasBasicCategoryById" parameterType="Long" resultMap="PersonasBasicCategoryResult">
+        <include refid="selectPersonasBasicCategoryVo"/>
+        where cat_id = #{catId}
+    </select>
+        
+    <insert id="insertPersonasBasicCategory" parameterType="PersonasBasicCategory" useGeneratedKeys="true" keyProperty="catId">
+        insert into personas_basic_category
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">parent_id,</if>
+            <if test="ancestors != null">ancestors,</if>
+            <if test="catName != null">cat_name,</if>
+            <if test="status != null">status,</if>
+            <if test="orderNum != null">order_num,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="parentId != null">#{parentId},</if>
+            <if test="ancestors != null">#{ancestors},</if>
+            <if test="catName != null">#{catName},</if>
+            <if test="status != null">#{status},</if>
+            <if test="orderNum != null">#{orderNum},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updatePersonasBasicCategory" parameterType="PersonasBasicCategory">
+        update personas_basic_category
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="ancestors != null">ancestors = #{ancestors},</if>
+            <if test="catName != null">cat_name = #{catName},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="orderNum != null">order_num = #{orderNum},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where cat_id = #{catId}
+    </update>
+
+    <delete id="deletePersonasBasicCategoryById" parameterType="Long">
+        delete from personas_basic_category where cat_id = #{catId}
+    </delete>
+
+    <delete id="deletePersonasBasicCategoryByIds" parameterType="String">
+        delete from personas_basic_category where cat_id in 
+        <foreach item="catId" collection="array" open="(" separator="," close=")">
+            #{catId}
+        </foreach>
+    </delete>
+</mapper>
