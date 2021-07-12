@@ -10,6 +10,15 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
+      <el-form-item label="标签规则" prop="rule">
+        <el-input
+          v-model="queryParams.rule"
+          placeholder="请输入标签规则"
+          clearable
+          size="small"
+          @keyup.enter.native="handleQuery"
+        />
+      </el-form-item>
       <el-form-item label="标签状态" prop="state">
         <el-select v-model="queryParams.state" placeholder="请选择标签状态" clearable size="small">
           <el-option
@@ -34,7 +43,7 @@
           icon="el-icon-plus"
           size="mini"
           @click="handleAdd"
-          v-hasPermi="['tag:category:add']"
+          v-hasPermi="['tag:attrtag:add']"
         >新增</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -42,13 +51,17 @@
 
     <el-table
       v-loading="loading"
-      :data="categoryList"
+      :data="attrtagList"
       row-key="tagId"
       default-expand-all
       :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
     >
       <el-table-column label="标签名称" align="center" prop="tagName" />
+      <el-table-column label="标签规则" align="center" prop="rule" />
+      <el-table-column label="业务描述" align="center" prop="bizDesc" />
       <el-table-column label="标签等级" align="center" prop="level" :formatter="levelFormat" />
+      <el-table-column label="业务类型" align="center" prop="industry" />
+      <el-table-column label="标签状态" align="center" prop="state" :formatter="stateFormat" />
       <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -57,34 +70,40 @@
             type="text"
             icon="el-icon-edit"
             @click="handleUpdate(scope.row)"
-            v-hasPermi="['tag:category:edit']"
+            v-hasPermi="['tag:attrtag:edit']"
           >修改</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-plus"
             @click="handleAdd(scope.row)"
-            v-hasPermi="['tag:category:add']"
+            v-hasPermi="['tag:attrtag:add']"
           >新增</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-delete"
             @click="handleDelete(scope.row)"
-            v-hasPermi="['tag:category:remove']"
+            v-hasPermi="['tag:attrtag:remove']"
           >删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
-    <!-- 添加或修改分类管理对话框 -->
+    <!-- 添加或修改属性标签对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
         <el-form-item label="父标签id" prop="parentId">
-          <treeselect v-model="form.parentId" :options="categoryOptions" :normalizer="normalizer" placeholder="请选择父标签id" />
+          <treeselect v-model="form.parentId" :options="attrtagOptions" :normalizer="normalizer" placeholder="请选择父标签id" />
         </el-form-item>
         <el-form-item label="标签名称" prop="tagName">
           <el-input v-model="form.tagName" placeholder="请输入标签名称" />
+        </el-form-item>
+        <el-form-item label="标签规则" prop="rule">
+          <el-input v-model="form.rule" placeholder="请输入标签规则" />
+        </el-form-item>
+        <el-form-item label="业务描述" prop="bizDesc">
+          <el-input v-model="form.bizDesc" placeholder="请输入业务描述" />
         </el-form-item>
         <el-form-item label="标签等级" prop="level">
           <el-select v-model="form.level" placeholder="请选择标签等级">
@@ -95,6 +114,9 @@
               :value="parseInt(dict.dictValue)"
             ></el-option>
           </el-select>
+        </el-form-item>
+        <el-form-item label="业务类型" prop="industry">
+          <el-input v-model="form.industry" placeholder="请输入业务类型" />
         </el-form-item>
         <el-form-item label="标签状态" prop="state">
           <el-select v-model="form.state" placeholder="请选择标签状态">
@@ -119,12 +141,12 @@
 </template>
 
 <script>
-import { listCategory, getCategory, delCategory, addCategory, updateCategory, exportCategory } from "@/api/tag/category";
+import { listAttrtag, getAttrtag, delAttrtag, addAttrtag, updateAttrtag, exportAttrtag } from "@/api/tag/attrtag";
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 
 export default {
-  name: "Category",
+  name: "Attrtag",
   components: {
     Treeselect
   },
@@ -134,10 +156,10 @@ export default {
       loading: true,
       // 显示搜索条件
       showSearch: true,
-      // 分类管理表格数据
-      categoryList: [],
-      // 分类管理树选项
-      categoryOptions: [],
+      // 属性标签表格数据
+      attrtagList: [],
+      // 属性标签树选项
+      attrtagOptions: [],
       // 弹出层标题
       title: "",
       // 是否显示弹出层
@@ -149,6 +171,7 @@ export default {
       // 查询参数
       queryParams: {
         tagName: null,
+        rule: null,
         state: null,
       },
       // 表单参数
@@ -168,15 +191,15 @@ export default {
     });
   },
   methods: {
-    /** 查询分类管理列表 */
+    /** 查询属性标签列表 */
     getList() {
       this.loading = true;
-      listCategory(this.queryParams).then(response => {
-        this.categoryList = this.handleTree(response.data, "tagId", "parentId");
+      listAttrtag(this.queryParams).then(response => {
+        this.attrtagList = this.handleTree(response.data, "tagId", "parentId");
         this.loading = false;
       });
     },
-    /** 转换分类管理数据结构 */
+    /** 转换属性标签数据结构 */
     normalizer(node) {
       if (node.children && !node.children.length) {
         delete node.children;
@@ -187,13 +210,13 @@ export default {
         children: node.children
       };
     },
-	/** 查询分类管理下拉树结构 */
+	/** 查询属性标签下拉树结构 */
     getTreeselect() {
-      listCategory().then(response => {
-        this.categoryOptions = [];
+      listAttrtag().then(response => {
+        this.attrtagOptions = [];
         const data = { tagId: 0, tagName: '顶级节点', children: [] };
         data.children = this.handleTree(response.data, "tagId", "parentId");
-        this.categoryOptions.push(data);
+        this.attrtagOptions.push(data);
       });
     },
     // 标签等级字典翻译
@@ -250,7 +273,7 @@ export default {
         this.form.parentId = 0;
       }
       this.open = true;
-      this.title = "添加分类管理";
+      this.title = "添加属性标签";
     },
     /** 修改按钮操作 */
     handleUpdate(row) {
@@ -259,10 +282,10 @@ export default {
       if (row != null) {
         this.form.parentId = row.tagId;
       }
-      getCategory(row.tagId).then(response => {
+      getAttrtag(row.tagId).then(response => {
         this.form = response.data;
         this.open = true;
-        this.title = "修改分类管理";
+        this.title = "修改属性标签";
       });
     },
     /** 提交按钮 */
@@ -270,13 +293,13 @@ export default {
       this.$refs["form"].validate(valid => {
         if (valid) {
           if (this.form.tagId != null) {
-            updateCategory(this.form).then(response => {
+            updateAttrtag(this.form).then(response => {
               this.msgSuccess("修改成功");
               this.open = false;
               this.getList();
             });
           } else {
-            addCategory(this.form).then(response => {
+            addAttrtag(this.form).then(response => {
               this.msgSuccess("新增成功");
               this.open = false;
               this.getList();
@@ -287,12 +310,12 @@ export default {
     },
     /** 删除按钮操作 */
     handleDelete(row) {
-      this.$confirm('是否确认删除分类管理编号为"' + row.tagId + '"的数据项?', "警告", {
+      this.$confirm('是否确认删除属性标签编号为"' + row.tagId + '"的数据项?', "警告", {
           confirmButtonText: "确定",
           cancelButtonText: "取消",
           type: "warning"
         }).then(function() {
-          return delCategory(row.tagId);
+          return delAttrtag(row.tagId);
         }).then(() => {
           this.getList();
           this.msgSuccess("删除成功");

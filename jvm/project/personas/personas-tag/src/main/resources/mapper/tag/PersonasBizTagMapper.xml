@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pingpukj.tag.mapper.PersonasBizTagMapper">
+    <!--    基本标签结果集-->
+    <resultMap type="PersonasBasicTag" id="PersonasBasicTagResult">
+        <result property="tagId"    column="tag_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="ancestors"    column="ancestors"    />
+        <result property="tagName"    column="tag_name"    />
+        <result property="rule"    column="rule"    />
+        <result property="bizDesc"    column="biz_desc"    />
+        <result property="level"    column="level"    />
+        <result property="industry"    column="industry"    />
+        <result property="orderNum"    column="order_num"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="state"    column="state"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <!--    标签模型结果集-->
+    <resultMap type="PersonasModel" id="PersonasModelResult">
+        <result property="modelId"    column="model_id"    />
+        <result property="tagId"    column="tag_id"    />
+        <result property="type"    column="type"    />
+        <result property="modelName"    column="model_name"    />
+        <result property="modelMain"    column="model_main"    />
+        <result property="modelPath"    column="model_path"    />
+        <result property="scheTime"    column="sche_time"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="args"    column="args"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <!--基本标签  模型关联  需要做一对一映射 -->
+<!--    <resultMap id="SysCustomerSysGoodsResult" type="SysCustomer" extends="SysCustomerResult">-->
+<!--        <collection property="sysGoodsList" notNullColumn="sub_goods_id" javaType="java.util.List" resultMap="SysGoodsResult" />-->
+<!--    </resultMap>-->
+
+    <sql id="selectPersonasBizTagVo">
+        select t.tag_id, t.parent_id, t.ancestors, t.tag_name, t.rule, t.biz_desc, t.level, t.industry, t.order_num, t.del_flag, t.state, t.create_by, t.create_time, t.update_by, t.update_time, t.remark, m.sche_time, m.model_main, m.type, m.modle_path, m.args from personas_basic_tag t inner join personas_model m
+    </sql>
+
+<!--    <select id="selectPersonasAttributeTagList" parameterType="PersonasAttributeTag" resultMap="PersonasAttributeTagResult">-->
+<!--        <include refid="selectPersonasAttributeTagVo"/>-->
+<!--        <where>-->
+<!--            <if test="tagName != null  and tagName != ''"> and tag_name like concat('%', #{tagName}, '%')</if>-->
+<!--            <if test="rule != null  and rule != ''"> and rule = #{rule}</if>-->
+<!--            <if test="state != null "> and state = #{state}</if>-->
+<!--        </where>-->
+<!--    </select>-->
+
+<!--    <select id="selectPersonasAttributeTagById" parameterType="Long" resultMap="PersonasAttributeTagResult">-->
+<!--        <include refid="selectPersonasAttributeTagVo"/>-->
+<!--        where tag_id = #{tagId}-->
+<!--    </select>-->
+
+<!--    <insert id="insertPersonasAttributeTag" parameterType="PersonasAttributeTag" useGeneratedKeys="true" keyProperty="tagId">-->
+<!--        insert into personas_basic_tag-->
+<!--        <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--            <if test="parentId != null">parent_id,</if>-->
+<!--            <if test="ancestors != null">ancestors,</if>-->
+<!--            <if test="tagName != null">tag_name,</if>-->
+<!--            <if test="rule != null">rule,</if>-->
+<!--            <if test="bizDesc != null">biz_desc,</if>-->
+<!--            <if test="level != null">level,</if>-->
+<!--            <if test="industry != null">industry,</if>-->
+<!--            <if test="orderNum != null">order_num,</if>-->
+<!--            <if test="delFlag != null">del_flag,</if>-->
+<!--            <if test="state != null">state,</if>-->
+<!--            <if test="createBy != null">create_by,</if>-->
+<!--            <if test="createTime != null">create_time,</if>-->
+<!--            <if test="updateBy != null">update_by,</if>-->
+<!--            <if test="updateTime != null">update_time,</if>-->
+<!--            <if test="remark != null">remark,</if>-->
+<!--        </trim>-->
+<!--        <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--            <if test="parentId != null">#{parentId},</if>-->
+<!--            <if test="ancestors != null">#{ancestors},</if>-->
+<!--            <if test="tagName != null">#{tagName},</if>-->
+<!--            <if test="rule != null">#{rule},</if>-->
+<!--            <if test="bizDesc != null">#{bizDesc},</if>-->
+<!--            <if test="level != null">#{level},</if>-->
+<!--            <if test="industry != null">#{industry},</if>-->
+<!--            <if test="orderNum != null">#{orderNum},</if>-->
+<!--            <if test="delFlag != null">#{delFlag},</if>-->
+<!--            <if test="state != null">#{state},</if>-->
+<!--            <if test="createBy != null">#{createBy},</if>-->
+<!--            <if test="createTime != null">#{createTime},</if>-->
+<!--            <if test="updateBy != null">#{updateBy},</if>-->
+<!--            <if test="updateTime != null">#{updateTime},</if>-->
+<!--            <if test="remark != null">#{remark},</if>-->
+<!--        </trim>-->
+<!--    </insert>-->
+
+<!--    <update id="updatePersonasAttributeTag" parameterType="PersonasAttributeTag">-->
+<!--        update personas_basic_tag-->
+<!--        <trim prefix="SET" suffixOverrides=",">-->
+<!--            <if test="parentId != null">parent_id = #{parentId},</if>-->
+<!--            <if test="ancestors != null">ancestors = #{ancestors},</if>-->
+<!--            <if test="tagName != null">tag_name = #{tagName},</if>-->
+<!--            <if test="rule != null">rule = #{rule},</if>-->
+<!--            <if test="bizDesc != null">biz_desc = #{bizDesc},</if>-->
+<!--            <if test="level != null">level = #{level},</if>-->
+<!--            <if test="industry != null">industry = #{industry},</if>-->
+<!--            <if test="orderNum != null">order_num = #{orderNum},</if>-->
+<!--            <if test="delFlag != null">del_flag = #{delFlag},</if>-->
+<!--            <if test="state != null">state = #{state},</if>-->
+<!--            <if test="createBy != null">create_by = #{createBy},</if>-->
+<!--            <if test="createTime != null">create_time = #{createTime},</if>-->
+<!--            <if test="updateBy != null">update_by = #{updateBy},</if>-->
+<!--            <if test="updateTime != null">update_time = #{updateTime},</if>-->
+<!--            <if test="remark != null">remark = #{remark},</if>-->
+<!--        </trim>-->
+<!--        where tag_id = #{tagId}-->
+<!--    </update>-->
+
+<!--    <delete id="deletePersonasAttributeTagById" parameterType="Long">-->
+<!--        delete from personas_basic_tag where tag_id = #{tagId}-->
+<!--    </delete>-->
+
+<!--    <delete id="deletePersonasAttributeTagByIds" parameterType="String">-->
+<!--        delete from personas_basic_tag where tag_id in-->
+<!--        <foreach item="tagId" collection="array" open="(" separator="," close=")">-->
+<!--            #{tagId}-->
+<!--        </foreach>-->
+<!--    </delete>-->
+</mapper>

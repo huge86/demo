@@ -6,12 +6,12 @@ import com.pingpukj.common.annotation.Excel;
 import com.pingpukj.common.core.domain.TreeEntity;
 
 /**
- * 分类管理对象 personas_basic_tag
+ * 属性标签对象 personas_basic_tag
  * 
  * @author huzunjie
- * @date 2021-07-07
+ * @date 2021-07-09
  */
-public class PersonasBasicCategory extends TreeEntity
+public class PersonasAttributeTag extends TreeEntity
 {
     private static final long serialVersionUID = 1L;
 
@@ -23,9 +23,11 @@ public class PersonasBasicCategory extends TreeEntity
     private String tagName;
 
     /** 标签规则 */
+    @Excel(name = "标签规则")
     private String rule;
 
     /** 业务描述 */
+    @Excel(name = "业务描述")
     private String bizDesc;
 
     /** 标签等级 */
@@ -33,12 +35,14 @@ public class PersonasBasicCategory extends TreeEntity
     private Integer level;
 
     /** 业务类型 */
+    @Excel(name = "业务类型")
     private String industry;
 
-    /** 删除标志（0代表存在 1代表删除） */
+    /** 删除标志 */
     private String delFlag;
 
     /** 标签状态 */
+    @Excel(name = "标签状态")
     private Integer state;
 
     public void setTagId(Long tagId) 

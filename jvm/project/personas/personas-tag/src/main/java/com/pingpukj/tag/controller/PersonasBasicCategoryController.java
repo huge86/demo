@@ -20,10 +20,10 @@ import com.pingpukj.tag.service.IPersonasBasicCategoryService;
 import com.pingpukj.common.utils.poi.ExcelUtil;
 
 /**
- * 标签分类Controller
+ * 分类管理Controller
  * 
  * @author huzunjie
- * @date 2021-06-28
+ * @date 2021-07-07
  */
 @RestController
 @RequestMapping("/tag/category")
@@ -33,7 +33,7 @@ public class PersonasBasicCategoryController extends BaseController
     private IPersonasBasicCategoryService personasBasicCategoryService;
 
     /**
-     * 查询标签分类列表
+     * 查询分类管理列表
      */
     @PreAuthorize("@ss.hasPermi('tag:category:list')")
     @GetMapping("/list")
@@ -44,33 +44,33 @@ public class PersonasBasicCategoryController extends BaseController
     }
 
     /**
-     * 导出标签分类列表
+     * 导出分类管理列表
      */
     @PreAuthorize("@ss.hasPermi('tag:category:export')")
-    @Log(title = "标签分类", businessType = BusinessType.EXPORT)
+    @Log(title = "分类管理", businessType = BusinessType.EXPORT)
     @GetMapping("/export")
     public AjaxResult export(PersonasBasicCategory personasBasicCategory)
     {
         List<PersonasBasicCategory> list = personasBasicCategoryService.selectPersonasBasicCategoryList(personasBasicCategory);
         ExcelUtil<PersonasBasicCategory> util = new ExcelUtil<PersonasBasicCategory>(PersonasBasicCategory.class);
-        return util.exportExcel(list, "标签分类数据");
+        return util.exportExcel(list, "分类管理数据");
     }
 
     /**
-     * 获取标签分类详细信息
+     * 获取分类管理详细信息
      */
     @PreAuthorize("@ss.hasPermi('tag:category:query')")
-    @GetMapping(value = "/{catId}")
-    public AjaxResult getInfo(@PathVariable("catId") Long catId)
+    @GetMapping(value = "/{tagId}")
+    public AjaxResult getInfo(@PathVariable("tagId") Long tagId)
     {
-        return AjaxResult.success(personasBasicCategoryService.selectPersonasBasicCategoryById(catId));
+        return AjaxResult.success(personasBasicCategoryService.selectPersonasBasicCategoryById(tagId));
     }
 
     /**
-     * 新增标签分类
+     * 新增分类管理
      */
     @PreAuthorize("@ss.hasPermi('tag:category:add')")
-    @Log(title = "标签分类", businessType = BusinessType.INSERT)
+    @Log(title = "分类管理", businessType = BusinessType.INSERT)
     @PostMapping
     public AjaxResult add(@RequestBody PersonasBasicCategory personasBasicCategory)
     {
@@ -78,10 +78,10 @@ public class PersonasBasicCategoryController extends BaseController
     }
 
     /**
-     * 修改标签分类
+     * 修改分类管理
      */
     @PreAuthorize("@ss.hasPermi('tag:category:edit')")
-    @Log(title = "标签分类", businessType = BusinessType.UPDATE)
+    @Log(title = "分类管理", businessType = BusinessType.UPDATE)
     @PutMapping
     public AjaxResult edit(@RequestBody PersonasBasicCategory personasBasicCategory)
     {
@@ -89,13 +89,13 @@ public class PersonasBasicCategoryController extends BaseController
     }
 
     /**
-     * 删除标签分类
+     * 删除分类管理
      */
     @PreAuthorize("@ss.hasPermi('tag:category:remove')")
-    @Log(title = "标签分类", businessType = BusinessType.DELETE)
-	@DeleteMapping("/{catIds}")
-    public AjaxResult remove(@PathVariable Long[] catIds)
+    @Log(title = "分类管理", businessType = BusinessType.DELETE)
+	@DeleteMapping("/{tagIds}")
+    public AjaxResult remove(@PathVariable Long[] tagIds)
     {
-        return toAjax(personasBasicCategoryService.deletePersonasBasicCategoryByIds(catIds));
+        return toAjax(personasBasicCategoryService.deletePersonasBasicCategoryByIds(tagIds));
     }
 }

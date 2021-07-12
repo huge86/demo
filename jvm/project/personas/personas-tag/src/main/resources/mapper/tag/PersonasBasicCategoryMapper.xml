@@ -5,12 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.pingpukj.tag.mapper.PersonasBasicCategoryMapper">
     
     <resultMap type="PersonasBasicCategory" id="PersonasBasicCategoryResult">
-        <result property="catId"    column="cat_id"    />
+        <result property="tagId"    column="tag_id"    />
         <result property="parentId"    column="parent_id"    />
         <result property="ancestors"    column="ancestors"    />
-        <result property="catName"    column="cat_name"    />
-        <result property="status"    column="status"    />
+        <result property="tagName"    column="tag_name"    />
+        <result property="rule"    column="rule"    />
+        <result property="bizDesc"    column="biz_desc"    />
+        <result property="level"    column="level"    />
+        <result property="industry"    column="industry"    />
         <result property="orderNum"    column="order_num"    />
+        <result property="delFlag"    column="del_flag"    />
+        <result property="state"    column="state"    />
         <result property="createBy"    column="create_by"    />
         <result property="createTime"    column="create_time"    />
         <result property="updateBy"    column="update_by"    />
@@ -19,30 +24,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectPersonasBasicCategoryVo">
-        select cat_id, parent_id, ancestors, cat_name, status, order_num, create_by, create_time, update_by, update_time, remark from personas_basic_category
+        select tag_id, parent_id, ancestors, tag_name, rule, biz_desc, level, industry, order_num, del_flag, state, create_by, create_time, update_by, update_time, remark from personas_basic_tag
     </sql>
 
     <select id="selectPersonasBasicCategoryList" parameterType="PersonasBasicCategory" resultMap="PersonasBasicCategoryResult">
         <include refid="selectPersonasBasicCategoryVo"/>
         <where>  
-            <if test="catName != null  and catName != ''"> and cat_name like concat('%', #{catName}, '%')</if>
-            <if test="status != null  and status != ''"> and status = #{status}</if>
+            <if test="tagName != null  and tagName != ''"> and tag_name like concat('%', #{tagName}, '%')</if>
+            <if test="state != null "> and state = #{state}</if>
         </where>
     </select>
     
     <select id="selectPersonasBasicCategoryById" parameterType="Long" resultMap="PersonasBasicCategoryResult">
         <include refid="selectPersonasBasicCategoryVo"/>
-        where cat_id = #{catId}
+        where tag_id = #{tagId}
     </select>
         
-    <insert id="insertPersonasBasicCategory" parameterType="PersonasBasicCategory" useGeneratedKeys="true" keyProperty="catId">
-        insert into personas_basic_category
+    <insert id="insertPersonasBasicCategory" parameterType="PersonasBasicCategory" useGeneratedKeys="true" keyProperty="tagId">
+        insert into personas_basic_tag
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="parentId != null">parent_id,</if>
             <if test="ancestors != null">ancestors,</if>
-            <if test="catName != null">cat_name,</if>
-            <if test="status != null">status,</if>
+            <if test="tagName != null">tag_name,</if>
+            <if test="rule != null">rule,</if>
+            <if test="bizDesc != null">biz_desc,</if>
+            <if test="level != null">level,</if>
+            <if test="industry != null">industry,</if>
             <if test="orderNum != null">order_num,</if>
+            <if test="delFlag != null">del_flag,</if>
+            <if test="state != null">state,</if>
             <if test="createBy != null">create_by,</if>
             <if test="createTime != null">create_time,</if>
             <if test="updateBy != null">update_by,</if>
@@ -52,9 +62,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="parentId != null">#{parentId},</if>
             <if test="ancestors != null">#{ancestors},</if>
-            <if test="catName != null">#{catName},</if>
-            <if test="status != null">#{status},</if>
+            <if test="tagName != null">#{tagName},</if>
+            <if test="rule != null">#{rule},</if>
+            <if test="bizDesc != null">#{bizDesc},</if>
+            <if test="level != null">#{level},</if>
+            <if test="industry != null">#{industry},</if>
             <if test="orderNum != null">#{orderNum},</if>
+            <if test="delFlag != null">#{delFlag},</if>
+            <if test="state != null">#{state},</if>
             <if test="createBy != null">#{createBy},</if>
             <if test="createTime != null">#{createTime},</if>
             <if test="updateBy != null">#{updateBy},</if>
@@ -64,30 +79,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
 
     <update id="updatePersonasBasicCategory" parameterType="PersonasBasicCategory">
-        update personas_basic_category
+        update personas_basic_tag
         <trim prefix="SET" suffixOverrides=",">
             <if test="parentId != null">parent_id = #{parentId},</if>
             <if test="ancestors != null">ancestors = #{ancestors},</if>
-            <if test="catName != null">cat_name = #{catName},</if>
-            <if test="status != null">status = #{status},</if>
+            <if test="tagName != null">tag_name = #{tagName},</if>
+            <if test="rule != null">rule = #{rule},</if>
+            <if test="bizDesc != null">biz_desc = #{bizDesc},</if>
+            <if test="level != null">level = #{level},</if>
+            <if test="industry != null">industry = #{industry},</if>
             <if test="orderNum != null">order_num = #{orderNum},</if>
+            <if test="delFlag != null">del_flag = #{delFlag},</if>
+            <if test="state != null">state = #{state},</if>
             <if test="createBy != null">create_by = #{createBy},</if>
             <if test="createTime != null">create_time = #{createTime},</if>
             <if test="updateBy != null">update_by = #{updateBy},</if>
             <if test="updateTime != null">update_time = #{updateTime},</if>
             <if test="remark != null">remark = #{remark},</if>
         </trim>
-        where cat_id = #{catId}
+        where tag_id = #{tagId}
     </update>
 
     <delete id="deletePersonasBasicCategoryById" parameterType="Long">
-        delete from personas_basic_category where cat_id = #{catId}
+        delete from personas_basic_tag where tag_id = #{tagId}
     </delete>
 
     <delete id="deletePersonasBasicCategoryByIds" parameterType="String">
-        delete from personas_basic_category where cat_id in 
-        <foreach item="catId" collection="array" open="(" separator="," close=")">
-            #{catId}
+        delete from personas_basic_tag where tag_id in 
+        <foreach item="tagId" collection="array" open="(" separator="," close=")">
+            #{tagId}
         </foreach>
     </delete>
 </mapper>

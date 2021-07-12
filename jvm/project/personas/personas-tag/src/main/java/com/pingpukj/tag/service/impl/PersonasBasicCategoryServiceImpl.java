@@ -9,10 +9,10 @@ import com.pingpukj.tag.domain.PersonasBasicCategory;
 import com.pingpukj.tag.service.IPersonasBasicCategoryService;
 
 /**
- * 标签分类Service业务层处理
+ * 分类管理Service业务层处理
  * 
  * @author huzunjie
- * @date 2021-06-28
+ * @date 2021-07-07
  */
 @Service
 public class PersonasBasicCategoryServiceImpl implements IPersonasBasicCategoryService 
@@ -21,22 +21,22 @@ public class PersonasBasicCategoryServiceImpl implements IPersonasBasicCategoryS
     private PersonasBasicCategoryMapper personasBasicCategoryMapper;
 
     /**
-     * 查询标签分类
+     * 查询分类管理
      * 
-     * @param catId 标签分类ID
-     * @return 标签分类
+     * @param tagId 分类管理ID
+     * @return 分类管理
      */
     @Override
-    public PersonasBasicCategory selectPersonasBasicCategoryById(Long catId)
+    public PersonasBasicCategory selectPersonasBasicCategoryById(Long tagId)
     {
-        return personasBasicCategoryMapper.selectPersonasBasicCategoryById(catId);
+        return personasBasicCategoryMapper.selectPersonasBasicCategoryById(tagId);
     }
 
     /**
-     * 查询标签分类列表
+     * 查询分类管理列表
      * 
-     * @param personasBasicCategory 标签分类
-     * @return 标签分类
+     * @param personasBasicCategory 分类管理
+     * @return 分类管理
      */
     @Override
     public List<PersonasBasicCategory> selectPersonasBasicCategoryList(PersonasBasicCategory personasBasicCategory)
@@ -45,9 +45,9 @@ public class PersonasBasicCategoryServiceImpl implements IPersonasBasicCategoryS
     }
 
     /**
-     * 新增标签分类
+     * 新增分类管理
      * 
-     * @param personasBasicCategory 标签分类
+     * @param personasBasicCategory 分类管理
      * @return 结果
      */
     @Override
@@ -58,9 +58,9 @@ public class PersonasBasicCategoryServiceImpl implements IPersonasBasicCategoryS
     }
 
     /**
-     * 修改标签分类
+     * 修改分类管理
      * 
-     * @param personasBasicCategory 标签分类
+     * @param personasBasicCategory 分类管理
      * @return 结果
      */
     @Override
@@ -71,26 +71,26 @@ public class PersonasBasicCategoryServiceImpl implements IPersonasBasicCategoryS
     }
 
     /**
-     * 批量删除标签分类
+     * 批量删除分类管理
      * 
-     * @param catIds 需要删除的标签分类ID
+     * @param tagIds 需要删除的分类管理ID
      * @return 结果
      */
     @Override
-    public int deletePersonasBasicCategoryByIds(Long[] catIds)
+    public int deletePersonasBasicCategoryByIds(Long[] tagIds)
     {
-        return personasBasicCategoryMapper.deletePersonasBasicCategoryByIds(catIds);
+        return personasBasicCategoryMapper.deletePersonasBasicCategoryByIds(tagIds);
     }
 
     /**
-     * 删除标签分类信息
+     * 删除分类管理信息
      * 
-     * @param catId 标签分类ID
+     * @param tagId 分类管理ID
      * @return 结果
      */
     @Override
-    public int deletePersonasBasicCategoryById(Long catId)
+    public int deletePersonasBasicCategoryById(Long tagId)
     {
-        return personasBasicCategoryMapper.deletePersonasBasicCategoryById(catId);
+        return personasBasicCategoryMapper.deletePersonasBasicCategoryById(tagId);
     }
 }
