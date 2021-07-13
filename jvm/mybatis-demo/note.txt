@@ -1,0 +1,7 @@
+1.快速入门  itheima_mybatis_quick
+2.MyBatis的dao层实现，传统实现方式：itheima_mybatis_dao
+3.MyBatis的dao层实现，接口代理方式实现规范，需满足四条规范，见PPT：itheima_mybatis_dao_proxy
+4.MyBatis映射文件深入动态SQL概述和环境搭建，itheima_mybatis_mapper
+5.Mybatis核心配置文件深入：itheima_mybatis_config   介绍：typeHandlers ,plugins
+6.Mybatis多表操作：itheima_mybatis_multi  配置模式
+7.Mybatis多表操作：itheima_mybatis_anno   注解模式
