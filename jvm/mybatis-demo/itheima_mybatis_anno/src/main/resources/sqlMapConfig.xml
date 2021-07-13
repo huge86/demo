@@ -27,7 +27,7 @@
 
     <!--加载映射关系-->
     <mappers>
-        <!--指定接口所在的包-->
+        <!--注解方式：指定接口所在的包-->
         <package name="com.itheima.mapper"></package>
     </mappers>
 

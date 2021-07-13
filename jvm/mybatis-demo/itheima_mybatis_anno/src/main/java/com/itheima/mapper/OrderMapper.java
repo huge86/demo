@@ -17,7 +17,7 @@ public interface OrderMapper {
     public List<Order> findByUid(int uid);
 
 
-
+    //一对一，一个订单只能属于一个用户
     @Select("select * from orders")
     @Results({
             @Result(column = "id",property = "id"),

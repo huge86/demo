@@ -22,6 +22,8 @@ public interface UserMapper {
     @Select("select * from user")
     public List<User> findAll();
 
+    //一对多映射，一个用户有多个订单
+
     @Select("select * from user")
     @Results({
             @Result(id=true ,column = "id",property = "id"),
