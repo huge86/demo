@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itcast.mp.mapper.UserMapper">
+<!--    # 配置了实体对象的扫描包：mybatis-plus.type-aliases-package = cn.itcast.mp.pojo，因此xml中可以不用写全限定名-->
+    <select id="findById" resultType="User">
+        select * from tb_user where id = #{id}
+    </select>
+
+</mapper>
